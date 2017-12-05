@@ -7,12 +7,12 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/','data-turbolinks-track': 'reload' %>
 
     <%= tag :meta, name: "stripe_publishable_key", content: Rails.application.secrets.stripe_publishable_key %>
   </head>
 
-  <body data-turbolinks="false">
+  <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/messages' %>
     <div class="container"> 
