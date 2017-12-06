@@ -3,6 +3,8 @@ $(document).on("turbolinks:load", function() {
   var stripe = Stripe(publishable_key);
   var elements = stripe.elements();
 
+  console.log('Publishable key: ' + publishable_key);
+
   // Custom styling can be passed to options when creating an Element.
   var style = {
     base: {
@@ -55,6 +57,8 @@ function stripeTokenHandler(token) {
   hiddenInput.setAttribute('value', token.id);
   form.appendChild(hiddenInput);
 
+  console.log(token);
+
   // Submit the form
-  form.submit();
+  // form.submit();
 }
