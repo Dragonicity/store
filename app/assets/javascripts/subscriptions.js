@@ -61,13 +61,13 @@ function stripeTokenHandler(token) {
   });
 
   // Submit the form
-  // form.submit();
+  form.submit();
 }
 
 function addFieldToForm(form, token, field) {
   var hiddenInput = document.createElement('input');
   hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', "card_" + field);
+  hiddenInput.setAttribute('name', "user[card_" + field + "]");
   hiddenInput.setAttribute('value', token.card[field]);
   form.appendChild(hiddenInput);
 }
