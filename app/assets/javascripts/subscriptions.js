@@ -3,8 +3,6 @@ $(document).on("turbolinks:load", function() {
   var stripe = Stripe(publishable_key);
   var elements = stripe.elements();
 
-  console.log('Publishable key: ' + publishable_key);
-
   // Custom styling can be passed to options when creating an Element.
   var style = {
     base: {
@@ -57,8 +55,19 @@ function stripeTokenHandler(token) {
   hiddenInput.setAttribute('value', token.id);
   form.appendChild(hiddenInput);
 
-  console.log(token);
+
+  ["brand", "exp_month", "exp_year", "last4"].forEach(function(field) {
+    addFieldToForm(form, token, field);
+  });
 
   // Submit the form
   // form.submit();
+}
+
+function addFieldToForm(form, token, field) {
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', "card_" + field);
+  hiddenInput.setAttribute('value', token.card[field]);
+  form.appendChild(hiddenInput);
 }
