@@ -56,6 +56,7 @@ function stripeTokenHandler(token) {
   form.appendChild(hiddenInput);
 
 
+  // Add hidden fields to the form to hold the card attributes
   ["brand", "exp_month", "exp_year", "last4"].forEach(function(field) {
     addFieldToForm(form, token, field);
   });
