@@ -13,4 +13,9 @@ class User < ApplicationRecord
       stripe_customer
     end
   end
+
+  def subscribed?
+    # Check for subscribed and free trial 
+    stripe_subscription_id? || (expires_at? && Time.zone.now < expires_at)
+  end
 end
