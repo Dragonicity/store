@@ -55,4 +55,32 @@
   <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 <% end %>
 
+<% if current_user.charges.any? %>
+  <h3>Charges</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.charges.each do |charge| %>
+        <tr>
+          <td><%= charge.created_at.to_date %></td>
+          <td><%= charge.stripe_currency %></td>
+          <% if charge.stripe_currency = "usd" %>
+            <td><%= charge.amount / 100 %></td> 
+          <% else %>
+            <td><%= charge.amount %></td> 
+          <% end %>
+          <td><%= link_to "Download", "#" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <%= link_to "Back", :back %>
