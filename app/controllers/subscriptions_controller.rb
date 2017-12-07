@@ -9,11 +9,21 @@ class SubscriptionsController < ApplicationController
 
     begin
       subscription = customer.subscriptions.create(
-          source: params[:stripeToken],
-          plan:   params[:plan]
+        source: params[:stripeToken],
+        plan:   params[:plan]
       )
 
-      current_user.assign_attributes(stripe_subscription_id: subscription.id)
+      current_user.assign_attributes(
+        stripe_subscription_id: subscription.id
+      )
+      
+      current_user.assign_attributes(
+        card_brand:     params[:user][:card_brand],
+        card_last4:     params[:user][:card_last4],
+        card_exp_month: params[:user][:card_exp_month],
+        card_exp_year:  params[:user][:card_exp_year]
+      ) if params[:user][:card_last4]
+
       current_user.save
 
       flash.notice = "Thanks for subscribing"
