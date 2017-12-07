@@ -14,7 +14,8 @@ class SubscriptionsController < ApplicationController
       )
 
       current_user.assign_attributes(
-        stripe_subscription_id: subscription.id
+        stripe_subscription_id: subscription.id,
+        expires_at: nil
       )
       
       current_user.assign_attributes(
