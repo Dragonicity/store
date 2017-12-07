@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204044037) do
+ActiveRecord::Schema.define(version: 20171207085742) do
+
+  create_table "charges", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "stripe_id"
+    t.string "stripe_currency"
+    t.integer "amount"
+    t.string "card_brand"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_charges_on_user_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
