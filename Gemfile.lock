@@ -224,7 +224,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   stripe (~> 3.8)
-  stripe_event (~> 1.5)
+  stripe_event
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

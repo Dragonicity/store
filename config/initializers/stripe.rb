@@ -4,3 +4,7 @@
 #}
 
 Stripe.api_key = Rails.application.secrets.SECRET_KEY
+
+StripeEvent.configure do |events|
+  events.subscribe 'charge.succeeded',Webhooks::ChargeSucceeded.new
+end
