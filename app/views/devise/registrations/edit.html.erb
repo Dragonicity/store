@@ -76,7 +76,7 @@
           <% else %>
             <td><%= charge.amount %></td> 
           <% end %>
-          <td><%= link_to "Download", "#" %></td>
+          <td><%= link_to "Download", charge_path(charge, format: :pdf) %></td>
         </tr>
       <% end %>
     </tbody>

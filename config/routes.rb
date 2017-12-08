@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resource :subscription
-  resources :products
+  resources  :charges
+  resources  :products
+  resource   :subscription
+  
   root to: "products#index"
 end
